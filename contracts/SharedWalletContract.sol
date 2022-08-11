@@ -33,8 +33,8 @@ contract SharedWalletContract is ERC20Pausable, Ownable {
         bool _isAllowed,
         uint256 _amountAllowed
     ) public onlyOwner {
-        beneficiaries[_beneficiary].isAllowed = _isAllowed;
         beneficiaries[_beneficiary].valueAllowed = _amountAllowed;
+        beneficiaries[_beneficiary].isAllowed = _isAllowed;
     }
 
     //RF05 - Deve ser possível estipular o máximo de moedas que o nosso contrato pode ter. (Somente o admin poderá realizar essa ação)
@@ -77,6 +77,8 @@ contract SharedWalletContract is ERC20Pausable, Ownable {
                 (beneficiaries[msg.sender].lastDateWithdrawAllowance + 30 days),
             "You can only withdraw your allowance once every 30 days"
         );
+
+        beneficiaries[msg.sender].lastDateWithdrawAllowance = block.timestamp;
 
         _transfer(owner(), msg.sender, beneficiaries[msg.sender].valueAllowed);
         return true;

@@ -1,7 +1,10 @@
 "use strict";
-var chai = require("chai");
+const chai = require("chai");
 
-var chaiAsPromised = require("chai-as-promised");
+const chaiAsPromised = require("chai-as-promised");
+const chaiSubset = require('chai-subset');
+
+chai.use(chaiSubset);
 chai.use(chaiAsPromised);
 
 module.exports = chai;
