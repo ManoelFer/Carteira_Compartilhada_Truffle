@@ -11,7 +11,7 @@ contract SharedWalletContract is ERC20Pausable, Ownable {
         bool isAllowed;
         uint256 lastDateWithdrawAllowance;
     }
-    uint256 maxTokenAllowed = 100000000000000000000000;
+    uint256 maxTokenAllowed = 1000000000000000000000000;
     mapping(address => beneficiaryInfo) public beneficiaries;
 
     //TASK 01 - Deve ser utilizado o modelo de tokens ERC20
@@ -20,7 +20,7 @@ contract SharedWalletContract is ERC20Pausable, Ownable {
          * A quantidade de tokens é 10000, como precisamos converter wei para ether, multiplicamos a quantidade com 10 elevado a 18
          */
 
-        addTokens(owner(), 10 * 10**18);
+        addTokens(owner(), 10000 * 10**18);
     }
 
     /*
